@@ -1,0 +1,20 @@
+.title {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  padding-right: 20%;
+  padding-left: 20%;
+}
+
+.title-header {
+  size: 26px;
+  color: #fff;
+  font-weight: 700;
+}
+
+.title-desc {
+  size: 14px;
+  color: #616161;
+  font-weight: 100px;
+}

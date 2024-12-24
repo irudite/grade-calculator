@@ -1,0 +1,25 @@
+.grader {
+  display: flex;
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.container {
+  flex: 1;
+  padding: 20px;
+  justify-content: center;
+  text-align: center;
+}
+
+.grader__img {
+  display: flex;
+  justify-content: center;
+}
+
+.grader__img img {
+  max-width: 50%;
+  height: auto;
+}
+
+.grader__list {
+}
