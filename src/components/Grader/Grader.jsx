@@ -10,7 +10,7 @@ const Grader = () => {
 
   const addRow = () => {
     if (category && weight && grade) {
-      const newRow = {category, weight, grade: parseFloat(grade)};
+      const newRow = {category, weight: parseFloat(weight), grade: parseFloat(grade)};
       setRow([...row, newRow]);
       setCategory('');
       setWeight('');
@@ -21,13 +21,50 @@ const Grader = () => {
     }
   }
 
+  const calculateGrade = () => {
+    let finalGrade = 0;
+    let totalWeight = 0;
+
+    for (let i = 0; i < row.length; i++) {
+      finalGrade += (row[i].grade / 100) * row[i].weight; 
+      totalWeight += row[i].weight;
+    }
+    
+    finalGrade = finalGrade.toFixed(2);
+    
+
+    if (finalGrade < 60) {
+      finalGrade += finalGrade + " (F)";
+    }
+    else if (finalGrade < 70) {
+      finalGrade += finalGrade + " (D)";
+    }
+    else if (finalGrade < 80) {
+      finalGrade += finalGrade + " (C)";
+    }
+    else if (finalGrade < 90) {
+      finalGrade += finalGrade + " (B)";
+    }
+    else if (finalGrade <= 100) {
+      finalGrade += finalGrade + " (A)";
+    }
+    else if (totalWeight > 100 || totalWeight < 0) {
+      return "The total weight cannot be above 100 or below 0";
+    }
+    else {
+      return "The total weight cannot be above 100 or below 0";
+    }
+
+    return finalGrade;
+  }
+
+  const resetGrades = () => {
+    setRow([]);
+  }
+
   return (
     <>
       <div class='grader'>
-        <div class='container grader__img'>
-          <img alt='school-logo' src='/school.svg'/> 
-        </div>
-        
         <div class='container grader__list'>
           <div class='grader__list--title'>
             <h4> Assigment Category </h4> 
@@ -51,25 +88,31 @@ const Grader = () => {
 
       <div class='grader__table'>
         <h4> Grade List: </h4>
-        <table>
-          <thead>
-            <tr>
-              <th> Category </th>
-              <th> Weight (%) </th>
-              <th> Grade (%) </th> 
-            </tr>
-          </thead>
-
-          <tbody>
-            {row.map((e, index) => (
-              <tr key={index}>
-                <td>{e.category}</td>
-                <td>{e.weight}</td>
-                <td>{e.grade}</td>
+        <div class='grader__table_container'> 
+          <table>
+            <thead>
+              <tr>
+                <th> Category </th>
+                <th> Weight (%) </th>
+                <th> Grade (%) </th> 
               </tr>
-            ))}
-          </tbody>
+            </thead>
+
+            <tbody>
+              {row.map((e, index) => (
+                <tr key={index}>
+                  <td>{e.category}</td>
+                  <td>{e.weight}</td>
+                  <td>{e.grade}</td>
+                </tr>
+              ))}
+            </tbody>
         </table>
+
+        </div>
+
+        <h4> Final Grade: {calculateGrade()} </h4>
+        <button onClick={resetGrades}> Reset Grades</button>
       </div>
     </>
   )
