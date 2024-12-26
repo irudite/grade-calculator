@@ -22,4 +22,9 @@
 }
 
 .grader__list {
+  display: flex;
+}
+
+.grader__list h4 {
+  text-align: center;
 }

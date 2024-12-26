@@ -9,14 +9,21 @@ const Grader = () => {
       </div>
       
       <div class='container grader__list'>
-        <div>
-
+        <div class='grader__list--title'>
+          <h4> Assigment Category </h4> 
+          <input placeholder='Enter category' type="number"/>
         </div>
-
-        <div>
-
+        <div class='grader__list--weight'>
+          <h4> Weight </h4> 
+          <input placeholder='Enter weight' type="number"/>
         </div>
+        <div class='grader__list--grade'>
+          <h4> Grade </h4>
+          <input placeholder='Enter grade' type="number"/>
+        </div>
+        <button> Add Category </button>
       </div>
+      <hr/>
     </div>
   )
 }
