@@ -28,3 +28,7 @@
 .grader__list h4 {
   text-align: center;
 }
+
+.grader input {
+  border-radius: 10px;
+}
